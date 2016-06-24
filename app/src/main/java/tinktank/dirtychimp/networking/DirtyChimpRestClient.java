@@ -1,4 +1,4 @@
-package tinktank.dirtychimp.controllers;
+package tinktank.dirtychimp.networking;
 import com.loopj.android.http.*;
 
 
@@ -9,14 +9,19 @@ import com.loopj.android.http.*;
 public class DirtyChimpRestClient {
 
     /*Constant for API request URL*/
-    private static final String DirtyChimpApiUrl = "http://mysafeinfo.com/api/data?list=englishmonarchs&format=json";
+    private static String DirtyChimpApiUrl = "http://mysafeinfo.com/api/data?list=englishmonarchs&format=json";
 
     /*Asynchronous HTTP client*/
     private static AsyncHttpClient client = new AsyncHttpClient();
 
     /*Default Constructor*/
-    public DirtyChimpRestClient() {
+    public DirtyChimpRestClient(){
 
+    }
+
+    /*Initializes client with given url*/
+    public DirtyChimpRestClient(String url){
+        this.DirtyChimpApiUrl = url;
     }
 
     /*Handles the asynchronous get request from theDirtyChimpApi*/

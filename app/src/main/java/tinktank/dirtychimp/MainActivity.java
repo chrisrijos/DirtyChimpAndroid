@@ -5,7 +5,7 @@ import org.json.*;
 import com.loopj.android.http.*;
 
 import cz.msebera.android.httpclient.Header;
-import tinktank.dirtychimp.controllers.DirtyChimpRestClient;
+import tinktank.dirtychimp.networking.DirtyChimpRestClient;
 
 public class MainActivity extends AppCompatActivity{
 
