@@ -4,7 +4,10 @@ import android.os.Bundle;
 import org.json.*;
 import com.loopj.android.http.*;
 
+import java.util.ArrayList;
+
 import cz.msebera.android.httpclient.Header;
+import tinktank.dirtychimp.adapters.JSONAdapter;
 import tinktank.dirtychimp.networking.DirtyChimpRestClient;
 
 public class MainActivity extends AppCompatActivity{
@@ -18,14 +21,12 @@ public class MainActivity extends AppCompatActivity{
 
             @Override
             public void onSuccess(int statusCode, Header[] headers, JSONArray response) {
-                try {
-                    JSONObject firstEvent = (JSONObject) response.get(0);
-                    String video_url = firstEvent.getString("nm");
 
-                    //handle response
-                    System.out.println(video_url);
-                } catch (JSONException e) {
-                    e.printStackTrace();
+                String t = "video";
+                ArrayList<String> jsonObjects =
+                        (new JSONAdapter().convert_json_string(t, response));
+                for(String s : jsonObjects){
+                    System.out.println(s);
                 }
             }
 

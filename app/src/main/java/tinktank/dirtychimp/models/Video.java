@@ -25,6 +25,7 @@ public class Video {
         this.v_desc = desc;
         this.v_url = url;
     }
+
     /*Retrieves title from video*/
     public String getV_title() {
         return v_title;
@@ -33,6 +34,7 @@ public class Video {
     public void setV_title(String v_title) {
         this.v_title = v_title;
     }
+
     /*Retrieves description*/
     public String getV_desc() {
         return v_desc;
@@ -41,6 +43,7 @@ public class Video {
     public void setV_desc(String v_desc) {
         this.v_desc = v_desc;
     }
+
     /*Retrieves video_url*/
     public String getV_url() {
         return v_url;
@@ -49,11 +52,13 @@ public class Video {
     public void setV_url(String v_url) {
         this.v_url = v_url;
     }
+
     /*Retrieves tags*/
     public ArrayList getV_tags() {
         return v_tags;
     }
 
+    /*Sets tags for the video model*/
     public void setV_tags(ArrayList v_tags) {
         this.v_tags = v_tags;
     }

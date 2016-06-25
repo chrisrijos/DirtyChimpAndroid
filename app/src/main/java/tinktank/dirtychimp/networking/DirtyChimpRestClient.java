@@ -9,7 +9,7 @@ import com.loopj.android.http.*;
 public class DirtyChimpRestClient {
 
     /*Constant for API request URL*/
-    private static String DirtyChimpApiUrl = "http://mysafeinfo.com/api/data?list=englishmonarchs&format=json";
+    private static String DirtyChimpApiUrl = "https://dirty-chimp-chrisrijos.c9users.io/video/index.json";
 
     /*Asynchronous HTTP client*/
     private static AsyncHttpClient client = new AsyncHttpClient();
