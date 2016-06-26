@@ -23,8 +23,7 @@ public class MainActivity extends AppCompatActivity{
             public void onSuccess(int statusCode, Header[] headers, JSONArray response) {
 
                 String t = "video";
-                ArrayList<String> jsonObjects =
-                        (new JSONAdapter().convert_json_string(t, response));
+                ArrayList<String> jsonObjects = (new JSONAdapter().convert_json_string(t, response));
                 for(String s : jsonObjects){
                     System.out.println(s);
                 }

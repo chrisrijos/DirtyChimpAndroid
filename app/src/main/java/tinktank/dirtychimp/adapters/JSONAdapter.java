@@ -36,6 +36,7 @@ public class JSONAdapter{
         return (ArrayList<String>) list;
     }
 
+    /*Converts JSONObject to hashmap*/
     public Map<String, Object> toMap(JSONObject object) throws JSONException{
         Map<String, Object> map = new HashMap<String, Object>();
 

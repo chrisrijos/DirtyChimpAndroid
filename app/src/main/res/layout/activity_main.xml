@@ -10,4 +10,5 @@
     tools:context="tinktank.dirtychimp.MainActivity"
     android:padding="0dp"
     android:theme="@style/Theme.AppCompat.Light.NoActionBar">
+
 </RelativeLayout>
