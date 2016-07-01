@@ -23,6 +23,7 @@ public class JSONAdapter{
     public JSONAdapter(){
 
     }
+
     /*converts JSONArrayInput and key into a list of all of the entries with that key*/
     public ArrayList<String> convert_json_string(String key, JSONArray array){
         List<String> list = new ArrayList<>();
