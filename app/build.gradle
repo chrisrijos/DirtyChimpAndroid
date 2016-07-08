@@ -6,7 +6,7 @@ android {
 
     defaultConfig {
         applicationId "tinktank.dirtychimp"
-        minSdkVersion 15
+        minSdkVersion 21
         targetSdkVersion 23
         versionCode 1
         versionName "1.0"
@@ -27,5 +27,5 @@ dependencies {
     compile 'com.squareup.okhttp3:okhttp:3.3.0'
     compile 'com.android.support:design:23.4.0'
     compile "com.andkulikov:transitionseverywhere:1.6.4"
-    compile 'com.github.danylovolokh:video-player-manager:0.2.0'
+    compile 'com.android.support:recyclerview-v7:23.3.0'
 }

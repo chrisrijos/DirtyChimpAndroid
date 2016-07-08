@@ -7,7 +7,6 @@ import com.loopj.android.http.*;
 import java.util.ArrayList;
 
 import cz.msebera.android.httpclient.Header;
-import tinktank.dirtychimp.adapters.JSONAdapter;
 import tinktank.dirtychimp.networking.DirtyChimpRestClient;
 
 public class MainActivity extends AppCompatActivity{
@@ -29,9 +28,7 @@ public class MainActivity extends AppCompatActivity{
                 for(String s : jsonObjects){
                     System.out.println(s);
                 }
-                //creates list view
-
-
+                
             }
 
             // Append more data into the adapter
