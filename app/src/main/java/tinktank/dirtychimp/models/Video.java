@@ -4,10 +4,9 @@ import com.loopj.android.http.JsonHttpResponseHandler;
 
 import org.json.JSONArray;
 import org.json.JSONException;
-
+import org.json.JSONObject;
 import java.util.ArrayList;
 import java.util.List;
-
 import cz.msebera.android.httpclient.Header;
 import tinktank.dirtychimp.networking.DirtyChimpRestClient;
 
@@ -19,30 +18,29 @@ import tinktank.dirtychimp.networking.DirtyChimpRestClient;
 public class Video {
 
 
-
     /*Makes the asynchronous call to fill a list with the video data */
-    public static List<ListItem> getListData(){
-        List<ListItem> data = new ArrayList<>();
+    public void getListData(){
 
             DirtyChimpRestClient.get("", null, new JsonHttpResponseHandler(){
 
                 //on json connect success
                 @Override
                 public void onSuccess(int statusCode, Header[] headers, JSONArray response) {
+                    List<ListItem> data = new ArrayList<>();
+                    List<JSONObject> json_objects = new ArrayList<JSONObject>();
 
-                    String t = "video";
-                    //populates array with json objects related to key
-                    List<ListItem> list = new ArrayList<ListItem>();
+                    try {
 
-                    for(int i = 0; i < response.length(); i++) {
-                        try {
-                            list.add((ListItem) response.get(i));
-                            System.out.println("Response: " + list);
-                        } catch (JSONException e) {
-                            e.printStackTrace();
+                        for(int i = 0; i < response.length(); i++){
+                            json_objects.add(response.getJSONObject(i));
                         }
-                    }
 
+                        for(JSONObject o : json_objects){
+                            System.out.println(o.getString("title"));
+                        }
+                    } catch (JSONException e) {
+                        e.printStackTrace();
+                    }
                 }
 
                 @Override
@@ -51,6 +49,5 @@ public class Video {
                     System.out.println(errorResponse.toString());
                 }
             });
-        return data;
     }
 }
