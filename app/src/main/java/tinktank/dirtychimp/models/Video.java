@@ -7,6 +7,8 @@ import org.json.JSONException;
 import org.json.JSONObject;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.concurrent.RunnableFuture;
+
 import cz.msebera.android.httpclient.Header;
 import tinktank.dirtychimp.networking.DirtyChimpRestClient;
 
@@ -17,37 +19,51 @@ import tinktank.dirtychimp.networking.DirtyChimpRestClient;
  */
 public class Video {
 
+    private List<ListItem> data = new ArrayList<>();
+
+    /*Default Constructor*/
+    public Video(){
+
+    }
 
     /*Makes the asynchronous call to fill a list with the video data */
-    public void getListData(){
+    public List<ListItem> getListData(){
+        this.getResponse();
+        return this.data;
+    }
 
-            DirtyChimpRestClient.get("", null, new JsonHttpResponseHandler(){
+    /*Handles using RestClient to fill the list of json objects first within the video class*/
+    public void getResponse(){
+        DirtyChimpRestClient.get("", null, new JsonHttpResponseHandler(){
 
-                //on json connect success
-                @Override
-                public void onSuccess(int statusCode, Header[] headers, JSONArray response) {
-                    List<ListItem> data = new ArrayList<>();
-                    List<JSONObject> json_objects = new ArrayList<JSONObject>();
+            //on json connect success
+            @Override
+            public void onSuccess(int statusCode, Header[] headers, JSONArray response) {
+                List<JSONObject> json_objects = new ArrayList<JSONObject>();
+                try {
 
-                    try {
-
-                        for(int i = 0; i < response.length(); i++){
-                            json_objects.add(response.getJSONObject(i));
-                        }
-
-                        for(JSONObject o : json_objects){
-                            System.out.println(o.getString("title"));
-                        }
-                    } catch (JSONException e) {
-                        e.printStackTrace();
+                    for(int i = 0; i < response.length(); i++){
+                        json_objects.add(response.getJSONObject(i));
                     }
-                }
 
-                @Override
-                public void onFailure(int statusCode, Header[] headers, Throwable throwable, JSONArray errorResponse) {
+                    for(JSONObject o : json_objects){
+                        data.add(new ListItem(
+                                o.getString("title"),
+                                o.getString("description"),
+                                o.getString("video")
+                        ));
+                    }
 
-                    System.out.println(errorResponse.toString());
+                } catch (JSONException e) {
+                    e.printStackTrace();
                 }
-            });
+            }
+
+            @Override
+            public void onFailure(int statusCode, Header[] headers, Throwable throwable, JSONArray errorResponse) {
+
+                System.out.println(errorResponse.toString());
+            }
+        });
     }
 }

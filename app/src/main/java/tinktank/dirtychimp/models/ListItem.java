@@ -13,6 +13,12 @@ public class ListItem{
     private String video_description;
     private String video_thumbnail_url;
 
+    public ListItem(String video_title, String video_description, String video_thumbnail_url){
+        this.video_title = video_title;
+        this.video_description = video_description;
+        this.video_thumbnail_url = video_thumbnail_url;
+    }
+
     public String getVideo_title() {
         return video_title;
     }

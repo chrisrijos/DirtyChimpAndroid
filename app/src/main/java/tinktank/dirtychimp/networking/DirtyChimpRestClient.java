@@ -1,6 +1,11 @@
 package tinktank.dirtychimp.networking;
 import com.loopj.android.http.*;
 
+import java.util.ArrayList;
+import java.util.List;
+
+import tinktank.dirtychimp.models.ListItem;
+
 
 /**
  * @author: Chris Rijos : Tinktank Software
